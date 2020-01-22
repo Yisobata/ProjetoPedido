@@ -19,7 +19,7 @@ namespace SystemOrder
             DateTime moment = DateTime.Now;
             Console.Write("Status: ");
             OrderStatus status = Enum.Parse<OrderStatus>(Console.ReadLine());
-            Console.WriteLine("How many items to this order? ");
+            Console.Write("How many items to this order? ");
             int n = int.Parse(Console.ReadLine());
 
             Client client = new Client(name, email, birthDate);
@@ -29,8 +29,18 @@ namespace SystemOrder
             {
                 Console.WriteLine($"Enter #{i} item data: ");
                 Console.Write("Product name: ");
-
+                string productName = Console.ReadLine();
+                Console.Write("Product price: ");
+                double price = double.Parse(Console.ReadLine());
+                Console.Write("Quantity: ");
+                int quantity = int.Parse(Console.ReadLine());
+                Product product = new Product(productName, price);
+                OrderItem orderItem = new OrderItem(quantity, price, product);
+                order.AddItem(orderItem);
             }
+            Console.WriteLine();
+            Console.WriteLine("ORDER SUMMARY: ");
+            Console.WriteLine(order);
         }
     }
 }

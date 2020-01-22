@@ -1,4 +1,7 @@
-﻿namespace SystemOrder.Entities
+﻿using System.Globalization;
+using System.Text;
+
+namespace SystemOrder.Entities
 {
     class OrderItem
     {
@@ -19,6 +22,16 @@
         public double SubTotal()
         {
             return Price * Quantity;
+        }
+        public override string ToString()
+        {
+            return Product.Name
+                + ", $"
+                + Price.ToString("F2")
+                + ", Quantity: "
+                + Quantity
+                + ", Subtotal: $"
+                + SubTotal().ToString("F2");
         }
     }
 }
